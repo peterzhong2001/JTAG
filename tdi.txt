@@ -1,0 +1,9 @@
+0 0 1 1	// select chip 0
+0 0 0 1 // intest
+x x 1 1 // shift in data
+x x x x // shift out data
+
+0 1 1 1	// select chip 1
+0 0 0 1	// intest
+x 1 1 	// shift in data
+x x x	// shift out data
