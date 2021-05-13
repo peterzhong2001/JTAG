@@ -1,0 +1,388 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Study/Desktop/JTAG/JTAG - FPGA/simulation/modelsim
+vBSC_chain
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1620889202
+!i10b 1
+!s100 mOofF:GPBl;4fheY;zIYA2
+I4AQ2^OF9^:<X0icI4nRWJ1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 BSC_chain_sv_unit
+S1
+R0
+w1619493535
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/BSC_chain.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/BSC_chain.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1620889202.000000
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/BSC_chain.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/BSC_chain.sv|
+!i113 1
+Z6 o-sv -work work
+Z7 !s92 -sv -work work {+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA}
+Z8 tCvgOpt 0
+n@b@s@c_chain
+vbsr_decoder
+R1
+R2
+!i10b 1
+!s100 k8>OOJ<Q2D:Z=bzffR<0l2
+IVG8knmicMEFH[>0OSOaMa0
+R3
+!s105 bsr_decoder_sv_unit
+S1
+R0
+w1620769915
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_decoder.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_decoder.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_decoder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_decoder.sv|
+!i113 1
+R6
+R7
+R8
+vbsr_mux
+R1
+R2
+!i10b 1
+!s100 5:gFBTA_LmZKOoQiKBP8G3
+IDXzCH;M3_15mB=biKgPaP1
+R3
+!s105 bsr_mux_sv_unit
+S1
+R0
+w1620886152
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_mux.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_mux.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_mux.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_mux.sv|
+!i113 1
+R6
+R7
+R8
+vDE1_SoC
+R1
+R2
+!i10b 1
+!s100 5T^OeAd418dlX3mYMRHmP0
+IEcc15ebJ]YKRE@G>LP2dH3
+R3
+Z9 !s105 DE1_SoC_sv_unit
+S1
+R0
+Z10 w1620887299
+Z11 8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv
+Z12 FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+Z13 !s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv|
+Z14 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv|
+!i113 1
+R6
+R7
+R8
+n@d@e1_@so@c
+vinput_processing
+R1
+R2
+!i10b 1
+!s100 _B[dhJ]1XmLQB=<G`Y[e?3
+IOY=9>h=n8IX`hn2TMY]3V3
+R3
+!s105 input_processing_sv_unit
+S1
+R0
+w1618888597
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/input_processing.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/input_processing.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/input_processing.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/input_processing.sv|
+!i113 1
+R6
+R7
+R8
+vinstr_decode
+R1
+R2
+!i10b 1
+!s100 ;A3QVNITb13JjMV_UBG;R3
+I=m>WdMCGFIIz1b^9>FbST1
+R3
+!s105 instr_decode_sv_unit
+S1
+R0
+w1620153021
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instr_decode.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/instr_decode.sv
+L0 7
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instr_decode.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instr_decode.sv|
+!i113 1
+R6
+R7
+R8
+vinstruction_cell
+R1
+R2
+!i10b 1
+!s100 4WaCQ4FmmffC17<a0gAIM3
+IUf:EoKfi?C0C]_6?obA<h2
+R3
+!s105 instruction_cell_sv_unit
+S1
+R0
+w1620151981
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_cell.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_cell.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_cell.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_cell.sv|
+!i113 1
+R6
+R7
+R8
+vinstruction_register
+R1
+R2
+!i10b 1
+!s100 8BDB2Na=;Aej<A=FK81cJ3
+IDWlNak=2dgzU?>7M`fHL00
+R3
+!s105 instruction_register_sv_unit
+S1
+R0
+w1620887260
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_register.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_register.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_register.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_register.sv|
+!i113 1
+R6
+R7
+R8
+vjtag_top
+R1
+R2
+!i10b 1
+!s100 U[hFYTEf3?WahaXQGC@T33
+IB4=PCg0[eOK4?k3EInRf12
+R3
+!s105 jtag_top_new_sv_unit
+S1
+R0
+w1620888717
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv|
+!i113 1
+R6
+R7
+R8
+vjtag_top_tb
+R1
+R2
+!i10b 1
+!s100 ELmFM9lYie5ceh0cJ7o@91
+I2CP@YOEMLGD2E?hMdlVTc1
+R3
+R9
+S1
+R0
+R10
+R11
+R12
+L0 33
+R4
+r1
+!s85 0
+31
+R5
+R13
+R14
+!i113 1
+R6
+R7
+R8
+vsingleBSC
+R1
+R2
+!i10b 1
+!s100 lkQzKh<XoNdC@31EJH7e51
+IYjJdiPQOlebFNQlNYLZ;Y0
+R3
+!s105 singleBSC_sv_unit
+S1
+R0
+w1592305066
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/singleBSC.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/singleBSC.sv
+L0 1
+R4
+r1
+!s85 0
+31
+Z15 !s108 1620889201.000000
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/singleBSC.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/singleBSC.sv|
+!i113 1
+R6
+R7
+R8
+nsingle@b@s@c
+vtap_state_machine
+R1
+Z16 !s110 1620889201
+!i10b 1
+!s100 G^>WUM5Fi5IFM6`W5<nbB0
+I??oFzXY^2D;c;MbBhMz<T1
+R3
+!s105 tap_state_machine_sv_unit
+S1
+R0
+w1620889174
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R15
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv|
+!i113 1
+R6
+R7
+R8
+vtest_ands
+R1
+R16
+!i10b 1
+!s100 Bgl51f<DD9eAlkEK2>dW:2
+IQ@QSG<`]7Jc;MLJHH^QAg3
+R3
+!s105 test_ands_sv_unit
+S1
+R0
+w1592252584
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_ands.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_ands.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R15
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_ands.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_ands.sv|
+!i113 1
+R6
+R7
+R8
+vtest_fsm
+R1
+R16
+!i10b 1
+!s100 T3gQMoK`S;oR`T>:aTPQ43
+IY`hE5F4>d^7fdJk83[FV12
+R3
+!s105 test_fsm_sv_unit
+S1
+R0
+w1592427316
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_fsm.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_fsm.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R15
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_fsm.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_fsm.sv|
+!i113 1
+R6
+R7
+R8
+vupdate_ir_cell
+R1
+R2
+!i10b 1
+!s100 :aaPF1=oeN;zPP2M`]91`3
+I[BF;Kii<TRPK4M3[EX@YU3
+R3
+!s105 update_ir_cell_sv_unit
+S1
+R0
+w1620151387
+8C:/Users/Study/Desktop/JTAG/JTAG - FPGA/update_ir_cell.sv
+FC:/Users/Study/Desktop/JTAG/JTAG - FPGA/update_ir_cell.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/Study/Desktop/JTAG/JTAG - FPGA/update_ir_cell.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Study/Desktop/JTAG/JTAG - FPGA|C:/Users/Study/Desktop/JTAG/JTAG - FPGA/update_ir_cell.sv|
+!i113 1
+R6
+R7
+R8

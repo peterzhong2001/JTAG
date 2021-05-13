@@ -2,6 +2,7 @@ module BSC_chain #(parameter chain_length = 4) (
   input logic clock_dr, 
   input logic update_dr, 
   input logic shift_dr, 
+  input logic enable,
   input logic mode, 
   input logic s_i,
   input logic [chain_length-1:0] p_data_i, 
@@ -14,9 +15,9 @@ module BSC_chain #(parameter chain_length = 4) (
   generate 
 		for (i = 0; i < chain_length; i++) begin: bs_chain
 			singleBSC bs_cell (
-        .shift_dr(shift_dr),
-        .update_dr(update_dr),
-        .clock_dr(clock_dr),
+        .shift_dr(shift_dr & enable),
+        .update_dr(update_dr & enable),
+        .clock_dr(clock_dr & enable),
         .mode(mode),
         .s_i(hold[i]),
         .s_o(hold[i+1]),

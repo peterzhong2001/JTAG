@@ -1,0 +1,493 @@
+|DE1_SoC
+HEX0[0] <= <VCC>
+HEX0[1] <= <VCC>
+HEX0[2] <= <VCC>
+HEX0[3] <= <VCC>
+HEX0[4] <= <VCC>
+HEX0[5] <= <VCC>
+HEX0[6] <= <VCC>
+HEX1[0] <= <VCC>
+HEX1[1] <= <VCC>
+HEX1[2] <= <VCC>
+HEX1[3] <= <VCC>
+HEX1[4] <= <VCC>
+HEX1[5] <= <VCC>
+HEX1[6] <= <VCC>
+HEX2[0] <= <VCC>
+HEX2[1] <= <VCC>
+HEX2[2] <= <VCC>
+HEX2[3] <= <VCC>
+HEX2[4] <= <VCC>
+HEX2[5] <= <VCC>
+HEX2[6] <= <VCC>
+HEX3[0] <= <VCC>
+HEX3[1] <= <VCC>
+HEX3[2] <= <VCC>
+HEX3[3] <= <VCC>
+HEX3[4] <= <VCC>
+HEX3[5] <= <VCC>
+HEX3[6] <= <VCC>
+HEX4[0] <= <VCC>
+HEX4[1] <= <VCC>
+HEX4[2] <= <VCC>
+HEX4[3] <= <VCC>
+HEX4[4] <= <VCC>
+HEX4[5] <= <VCC>
+HEX4[6] <= <VCC>
+HEX5[0] <= <VCC>
+HEX5[1] <= <VCC>
+HEX5[2] <= <VCC>
+HEX5[3] <= <VCC>
+HEX5[4] <= <VCC>
+HEX5[5] <= <VCC>
+HEX5[6] <= <VCC>
+KEY[0] => _.IN1
+KEY[1] => ~NO_FANOUT~
+KEY[2] => _.IN1
+KEY[3] => KEY[3].IN1
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => ~NO_FANOUT~
+SW[3] => ~NO_FANOUT~
+SW[4] => ~NO_FANOUT~
+SW[5] => ~NO_FANOUT~
+SW[6] => ~NO_FANOUT~
+SW[7] => ~NO_FANOUT~
+SW[8] => ~NO_FANOUT~
+SW[9] => ~NO_FANOUT~
+LEDR[0] <= jtag_top:JTAG.tdo_o
+LEDR[1] <= <GND>
+LEDR[2] <= <GND>
+LEDR[3] <= <GND>
+LEDR[4] <= <GND>
+LEDR[5] <= <GND>
+LEDR[6] <= jtag_top:JTAG.tap_states
+LEDR[7] <= jtag_top:JTAG.tap_states
+LEDR[8] <= jtag_top:JTAG.tap_states
+LEDR[9] <= jtag_top:JTAG.tap_states
+CLOCK_50 => CLOCK_50.IN1
+
+
+|DE1_SoC|input_processing:ip
+A => buffer.DATAIN
+out <= out.DB_MAX_OUTPUT_PORT_TYPE
+clk => ps[0].CLK
+clk => ps[1].CLK
+clk => ps[2].CLK
+clk => ps[3].CLK
+clk => ps[4].CLK
+clk => ps[5].CLK
+clk => ps[6].CLK
+clk => ps[7].CLK
+clk => ps[8].CLK
+clk => ps[9].CLK
+clk => ps[10].CLK
+clk => ps[11].CLK
+clk => ps[12].CLK
+clk => ps[13].CLK
+clk => ps[14].CLK
+clk => ps[15].CLK
+clk => ps[16].CLK
+clk => ps[17].CLK
+clk => ps[18].CLK
+clk => ps[19].CLK
+clk => ps[20].CLK
+clk => ps[21].CLK
+clk => ps[22].CLK
+clk => ps[23].CLK
+clk => ps[24].CLK
+clk => ps[25].CLK
+clk => ps[26].CLK
+clk => ps[27].CLK
+clk => ps[28].CLK
+clk => ps[29].CLK
+clk => ps[30].CLK
+clk => ps[31].CLK
+clk => in.CLK
+clk => buffer.CLK
+
+
+|DE1_SoC|jtag_top:JTAG
+tdi_i => tdi_i.IN3
+tms_i => tms_i.IN1
+tck_i => tck_i.IN4
+trst_n_i => trst_n_i.IN4
+tdo_o <= tdo.DB_MAX_OUTPUT_PORT_TYPE
+chip_reset => chip_reset.IN1
+system_1_in[0] => pIN_1[0].IN1
+system_1_in[1] => pIN_1[1].IN1
+system_1_out[0] <= BSC_chain:logic_one.p_data_o
+system_1_out[1] <= BSC_chain:logic_one.p_data_o
+system_2_in[0] => pIN_2[0].IN1
+system_2_in[1] => pIN_2[1].IN1
+system_2_out[0] <= BSC_chain:logic_two.p_data_o
+enable <= tap_state_machine:tap_controller.tdo_en
+tap_states[0] <= tap_state_machine:tap_controller.tap_state
+tap_states[1] <= tap_state_machine:tap_controller.tap_state
+tap_states[2] <= tap_state_machine:tap_controller.tap_state
+tap_states[3] <= tap_state_machine:tap_controller.tap_state
+
+
+|DE1_SoC|jtag_top:JTAG|tap_state_machine:tap_controller
+trst_n => shift_dr~reg0.ACLR
+trst_n => shift_ir~reg0.ACLR
+trst_n => reset_n_ir~reg0.ACLR
+trst_n => ps[0].PRESET
+trst_n => ps[1].PRESET
+trst_n => ps[2].PRESET
+trst_n => ps[3].PRESET
+trst_n => tdo_en~reg0.ACLR
+tck => ps[0].CLK
+tck => ps[1].CLK
+tck => ps[2].CLK
+tck => ps[3].CLK
+tck => clock_dr.IN1
+tck => update_dr.IN1
+tck => shift_dr~reg0.CLK
+tck => shift_ir~reg0.CLK
+tck => reset_n_ir~reg0.CLK
+tck => clock_ir.IN1
+tck => update_ir.IN1
+tck => tdo_en~reg0.CLK
+tms => Selector2.IN28
+tms => Selector3.IN19
+tms => Selector2.IN29
+tms => Selector3.IN20
+tms => Selector3.IN21
+tms => Selector3.IN22
+tms => Selector1.IN8
+tms => Selector1.IN9
+tms => Selector3.IN23
+tms => Selector2.IN30
+tms => Selector3.IN24
+tms => Selector3.IN25
+tms => Selector3.IN26
+tms => Selector3.IN27
+tms => Selector1.IN10
+tms => Selector1.IN11
+tms => Selector3.IN28
+tms => Selector2.IN31
+tms => Selector3.IN29
+tms => Selector0.IN2
+tms => Selector0.IN3
+tms => Selector0.IN4
+tms => Selector2.IN1
+tms => Selector2.IN2
+tms => Selector2.IN3
+tms => Selector2.IN4
+tms => Selector2.IN5
+tms => Selector2.IN6
+tms => Selector2.IN7
+tms => Selector2.IN8
+tms => Selector2.IN9
+tms => Selector2.IN10
+tms => Selector2.IN11
+tms => Selector3.IN2
+tms => Selector3.IN3
+clock_dr <= clock_dr.DB_MAX_OUTPUT_PORT_TYPE
+update_dr <= update_dr.DB_MAX_OUTPUT_PORT_TYPE
+shift_dr <= shift_dr~reg0.DB_MAX_OUTPUT_PORT_TYPE
+reset_n_ir <= reset_n_ir~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock_ir <= clock_ir.DB_MAX_OUTPUT_PORT_TYPE
+update_ir <= update_ir.DB_MAX_OUTPUT_PORT_TYPE
+shift_ir <= shift_ir~reg0.DB_MAX_OUTPUT_PORT_TYPE
+select_tdo <= ps[3].DB_MAX_OUTPUT_PORT_TYPE
+tdo_en <= tdo_en~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bypass <= Equal16.DB_MAX_OUTPUT_PORT_TYPE
+tap_state[0] <= ps[0].DB_MAX_OUTPUT_PORT_TYPE
+tap_state[1] <= ps[1].DB_MAX_OUTPUT_PORT_TYPE
+tap_state[2] <= ps[2].DB_MAX_OUTPUT_PORT_TYPE
+tap_state[3] <= ps[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg
+trst_n => trst_n.IN3
+reset_n => reset_n.IN3
+clock_ir => clock_ir.IN4
+update_ir => update_ir.IN3
+shift_ir => shift_ir.IN4
+s_i => hold[0].IN1
+instr_decode_out[0] => instr_decode_out[0].IN1
+instr_decode_out[1] => instr_decode_out[1].IN1
+instr_decode_out[2] => instr_decode_out[2].IN1
+p_data_i[0] => p_data_i[0].IN1
+p_data_i[1] => p_data_i[1].IN1
+p_data_i[2] => p_data_i[2].IN1
+p_data_i[3] => p_data_i[3].IN1
+instr_decode_in[0] <= instruction_cell:instr_reg[0].instr_cell.p_o
+instr_decode_in[1] <= instruction_cell:instr_reg[1].instr_cell.p_o
+instr_decode_in[2] <= instruction_cell:instr_reg[2].instr_cell.p_o
+instr_decode_in[3] <= instruction_cell:instr_reg[3].instr_cell.p_o
+p_data_o[0] <= update_ir_cell:update_reg[0].ir_cell.p_o
+p_data_o[1] <= update_ir_cell:update_reg[1].ir_cell.p_o
+p_data_o[2] <= update_ir_cell:update_reg[2].ir_cell.p_o
+s_o <= instruction_cell:instr_reg[3].instr_cell.s_o
+
+
+|DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[0].instr_cell
+p_i => clock_reg_in.DATAA
+p_o <= p_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= s_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+shift_ir => clock_reg_in.OUTPUTSELECT
+clock_ir => p_o~reg0.CLK
+clock_ir => s_o~reg0.CLK
+
+
+|DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[1].instr_cell
+p_i => clock_reg_in.DATAA
+p_o <= p_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= s_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+shift_ir => clock_reg_in.OUTPUTSELECT
+clock_ir => p_o~reg0.CLK
+clock_ir => s_o~reg0.CLK
+
+
+|DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[2].instr_cell
+p_i => clock_reg_in.DATAA
+p_o <= p_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= s_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+shift_ir => clock_reg_in.OUTPUTSELECT
+clock_ir => p_o~reg0.CLK
+clock_ir => s_o~reg0.CLK
+
+
+|DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[3].instr_cell
+p_i => clock_reg_in.DATAA
+p_o <= p_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= s_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+shift_ir => clock_reg_in.OUTPUTSELECT
+clock_ir => p_o~reg0.CLK
+clock_ir => s_o~reg0.CLK
+
+
+|DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|update_ir_cell:update_reg[0].ir_cell
+trst_n => p_o.IN0
+p_i => p_o~reg0.DATAIN
+p_o <= p_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+reset_n => p_o.IN1
+update_ir => p_o~reg0.CLK
+
+
+|DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|update_ir_cell:update_reg[1].ir_cell
+trst_n => p_o.IN0
+p_i => p_o~reg0.DATAIN
+p_o <= p_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+reset_n => p_o.IN1
+update_ir => p_o~reg0.CLK
+
+
+|DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|update_ir_cell:update_reg[2].ir_cell
+trst_n => p_o.IN0
+p_i => p_o~reg0.DATAIN
+p_o <= p_o~reg0.DB_MAX_OUTPUT_PORT_TYPE
+reset_n => p_o.IN1
+update_ir => p_o~reg0.CLK
+
+
+|DE1_SoC|jtag_top:JTAG|instr_decode:ins_decoder
+reset_n => hold_select[0].ACLR
+clk => hold_select[0].CLK
+instr_in[0] => Decoder1.IN3
+instr_in[0] => Equal0.IN1
+instr_in[1] => Decoder1.IN2
+instr_in[1] => Equal0.IN0
+instr_in[2] => Decoder1.IN1
+instr_in[2] => mux_sel.DATAB
+instr_in[3] => Decoder1.IN0
+instr_in[3] => always0.IN1
+instr_decode_out[0] <= ex_in_test.DB_MAX_OUTPUT_PORT_TYPE
+instr_decode_out[1] <= sample_preload.DB_MAX_OUTPUT_PORT_TYPE
+instr_decode_out[2] <= mux_sel.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DE1_SoC|jtag_top:JTAG|bsr_decoder:bsr_enable
+sel[0] => ShiftLeft0.IN3
+clk => bsr_decoder_out[0]~reg0.CLK
+clk => bsr_decoder_out[1]~reg0.CLK
+reset_n => bsr_decoder_out.OUTPUTSELECT
+reset_n => bsr_decoder_out.OUTPUTSELECT
+bsr_decoder_out[0] <= bsr_decoder_out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bsr_decoder_out[1] <= bsr_decoder_out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DE1_SoC|jtag_top:JTAG|bsr_mux:bsr_select
+bsr_so[0] => data_masked[0].IN1
+bsr_so[1] => data_masked[1].IN1
+sel[0] => ShiftLeft0.IN3
+scan_reg_out <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one
+clock_dr => comb.IN0
+clock_dr => comb.IN0
+clock_dr => comb.IN0
+clock_dr => comb.IN0
+update_dr => comb.IN0
+update_dr => comb.IN0
+update_dr => comb.IN0
+update_dr => comb.IN0
+shift_dr => comb.IN0
+shift_dr => comb.IN0
+shift_dr => comb.IN0
+shift_dr => comb.IN0
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+mode => mode.IN4
+s_i => hold[0].IN1
+p_data_i[0] => p_data_i[0].IN1
+p_data_i[1] => p_data_i[1].IN1
+p_data_i[2] => p_data_i[2].IN1
+p_data_i[3] => p_data_i[3].IN1
+p_data_o[0] <= singleBSC:bs_chain[0].bs_cell.p_o
+p_data_o[1] <= singleBSC:bs_chain[1].bs_cell.p_o
+p_data_o[2] <= singleBSC:bs_chain[2].bs_cell.p_o
+p_data_o[3] <= singleBSC:bs_chain[3].bs_cell.p_o
+s_o <= singleBSC:bs_chain[3].bs_cell.s_o
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[0].bs_cell
+p_i => clock_reg_in.DATAA
+p_i => p_o.DATAA
+p_o <= p_o.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= update_reg_in.DB_MAX_OUTPUT_PORT_TYPE
+shift_dr => clock_reg_in.OUTPUTSELECT
+clock_dr => update_reg_in.CLK
+update_dr => update_reg_out.CLK
+mode => p_o.OUTPUTSELECT
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[1].bs_cell
+p_i => clock_reg_in.DATAA
+p_i => p_o.DATAA
+p_o <= p_o.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= update_reg_in.DB_MAX_OUTPUT_PORT_TYPE
+shift_dr => clock_reg_in.OUTPUTSELECT
+clock_dr => update_reg_in.CLK
+update_dr => update_reg_out.CLK
+mode => p_o.OUTPUTSELECT
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[2].bs_cell
+p_i => clock_reg_in.DATAA
+p_i => p_o.DATAA
+p_o <= p_o.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= update_reg_in.DB_MAX_OUTPUT_PORT_TYPE
+shift_dr => clock_reg_in.OUTPUTSELECT
+clock_dr => update_reg_in.CLK
+update_dr => update_reg_out.CLK
+mode => p_o.OUTPUTSELECT
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[3].bs_cell
+p_i => clock_reg_in.DATAA
+p_i => p_o.DATAA
+p_o <= p_o.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= update_reg_in.DB_MAX_OUTPUT_PORT_TYPE
+shift_dr => clock_reg_in.OUTPUTSELECT
+clock_dr => update_reg_in.CLK
+update_dr => update_reg_out.CLK
+mode => p_o.OUTPUTSELECT
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_two
+clock_dr => comb.IN0
+clock_dr => comb.IN0
+clock_dr => comb.IN0
+update_dr => comb.IN0
+update_dr => comb.IN0
+update_dr => comb.IN0
+shift_dr => comb.IN0
+shift_dr => comb.IN0
+shift_dr => comb.IN0
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+enable => comb.IN1
+mode => mode.IN3
+s_i => hold[0].IN1
+p_data_i[0] => p_data_i[0].IN1
+p_data_i[1] => p_data_i[1].IN1
+p_data_i[2] => p_data_i[2].IN1
+p_data_o[0] <= singleBSC:bs_chain[0].bs_cell.p_o
+p_data_o[1] <= singleBSC:bs_chain[1].bs_cell.p_o
+p_data_o[2] <= singleBSC:bs_chain[2].bs_cell.p_o
+s_o <= singleBSC:bs_chain[2].bs_cell.s_o
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_two|singleBSC:bs_chain[0].bs_cell
+p_i => clock_reg_in.DATAA
+p_i => p_o.DATAA
+p_o <= p_o.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= update_reg_in.DB_MAX_OUTPUT_PORT_TYPE
+shift_dr => clock_reg_in.OUTPUTSELECT
+clock_dr => update_reg_in.CLK
+update_dr => update_reg_out.CLK
+mode => p_o.OUTPUTSELECT
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_two|singleBSC:bs_chain[1].bs_cell
+p_i => clock_reg_in.DATAA
+p_i => p_o.DATAA
+p_o <= p_o.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= update_reg_in.DB_MAX_OUTPUT_PORT_TYPE
+shift_dr => clock_reg_in.OUTPUTSELECT
+clock_dr => update_reg_in.CLK
+update_dr => update_reg_out.CLK
+mode => p_o.OUTPUTSELECT
+
+
+|DE1_SoC|jtag_top:JTAG|BSC_chain:logic_two|singleBSC:bs_chain[2].bs_cell
+p_i => clock_reg_in.DATAA
+p_i => p_o.DATAA
+p_o <= p_o.DB_MAX_OUTPUT_PORT_TYPE
+s_i => clock_reg_in.DATAB
+s_o <= update_reg_in.DB_MAX_OUTPUT_PORT_TYPE
+shift_dr => clock_reg_in.OUTPUTSELECT
+clock_dr => update_reg_in.CLK
+update_dr => update_reg_out.CLK
+mode => p_o.OUTPUTSELECT
+
+
+|DE1_SoC|jtag_top:JTAG|test_fsm:fms0
+clk => ps~1.DATAIN
+reset => ps.OUTPUTSELECT
+reset => ps.OUTPUTSELECT
+reset => ps.OUTPUTSELECT
+reset => ps.OUTPUTSELECT
+in[0] => always1.IN0
+in[1] => always1.IN1
+out[0] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|DE1_SoC|jtag_top:JTAG|test_ands:and0
+in[0] => out.IN0
+in[1] => out.IN1
+out <= out.DB_MAX_OUTPUT_PORT_TYPE
+
+

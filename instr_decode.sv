@@ -14,10 +14,12 @@ module instr_decode #(
     //user-defined instructions: first bit->0 & last two bits->11.
     //effective instr = instr[instr_length-2:2];
     input logic [instr_width-1:0] instr_in,
-    output logic [sel_width-1:0] mux_sel,
-    output logic sample_preload,
-    output logic ex_in_test
+    output logic [sel_width+1:0] instr_decode_out
     );
+	 
+	 logic [sel_width-1:0] mux_sel;
+    logic sample_preload;
+    logic ex_in_test;
 
     enum bit [2:0] {bypass, extest, sample, intest, select_bsr, bad} instr_type;
     //logic [2:0] instr_type;
@@ -51,5 +53,6 @@ module instr_decode #(
     assign mux_sel = (instr_type == select_bsr) ? chain_select : hold_select;
     assign sample_preload = (instr_type == sample);
     assign ex_in_test = (instr_type == extest) || (instr_type == intest);
+	 assign instr_decode_out = {mux_sel, sample_preload, ex_in_test};
 
 endmodule

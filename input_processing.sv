@@ -8,8 +8,10 @@ module input_processing (A, out, clk);
 	logic buffer, in;
 	
 	// put the input logic through 2 D_FFs to clean up
-	D_FF dff1 (.q(buffer), .d(A), .clk);
-	D_FF dff2 (.q(in), .d(buffer), .clk);
+	always_ff @(posedge clk) begin
+		buffer <= A;
+		in <= buffer;
+	end
 	
 	enum {none, hold} ps, ns;
 	
@@ -26,7 +28,7 @@ module input_processing (A, out, clk);
 	// Output logic
 	always_comb begin
 		case (ps)
-			none: if (A) out = 1'b1;
+			none: if (in) out = 1'b1;
 					else out = 1'b0;
 			hold: out = 1'b0;
 		endcase

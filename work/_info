@@ -1,0 +1,104 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/UW/ee271labs/lab1
+vDE1_SoC
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 !s110 1611105917
+!i10b 1
+!s100 >^<]EA@7QOHYoJHA5ML]d1
+IH_c51IeJk6ek9Y5`?Fo993
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 !s105 DE1_SoC_sv_unit
+S1
+Z4 dD:/UW/ee271labs/lab3
+Z5 w1611105879
+Z6 8./DE1_SoC.sv
+Z7 F./DE1_SoC.sv
+L0 2
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1611105917.000000
+Z10 !s107 ./DE1_SoC.sv|
+Z11 !s90 -reportprogress|300|./DE1_SoC.sv|
+!i113 1
+Z12 tCvgOpt 0
+n@d@e1_@so@c
+vDE1_SoC_testbench
+R0
+R1
+!i10b 1
+!s100 <3?XSNIj3>ZHi4YzIlUL92
+I6eLMMWeOFe3MOm2hRUCcG2
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 39
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+n@d@e1_@so@c_testbench
+vmux2_1
+R0
+Z13 !s110 1611099505
+!i10b 1
+!s100 db@k@fnga:kY6M:UDM?iV1
+IJ>QNS`gdkcliNLo;gQk_83
+R2
+Z14 !s105 mux2_1_sv_unit
+S1
+R4
+Z15 w1609802794
+Z16 8./mux2_1.sv
+Z17 F./mux2_1.sv
+L0 1
+R8
+r1
+!s85 0
+31
+Z18 !s108 1611099504.000000
+Z19 !s107 ./mux2_1.sv|
+Z20 !s90 -reportprogress|300|./mux2_1.sv|
+!i113 1
+R12
+vmux2_1_testbench
+R0
+R13
+!i10b 1
+!s100 AaPWH7@z6J3I9g7Ce@1ED1
+I;eMHfQ<@c56k5bMBE8Am71
+R2
+R14
+S1
+R4
+R15
+R16
+R17
+L0 8
+R8
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R12

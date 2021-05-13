@@ -1,0 +1,545 @@
+Analysis & Synthesis report for DE1_SoC
+Thu May 13 00:06:04 2021
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |DE1_SoC|jtag_top:JTAG|test_fsm:fms0|ps
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: jtag_top:JTAG
+ 14. Parameter Settings for User Entity Instance: jtag_top:JTAG|instruction_register:instr_reg
+ 15. Parameter Settings for User Entity Instance: jtag_top:JTAG|instr_decode:ins_decoder
+ 16. Parameter Settings for User Entity Instance: jtag_top:JTAG|bsr_decoder:bsr_enable
+ 17. Parameter Settings for User Entity Instance: jtag_top:JTAG|bsr_mux:bsr_select
+ 18. Parameter Settings for User Entity Instance: jtag_top:JTAG|BSC_chain:logic_one
+ 19. Parameter Settings for User Entity Instance: jtag_top:JTAG|BSC_chain:logic_two
+ 20. Port Connectivity Checks: "jtag_top:JTAG|instruction_register:instr_reg"
+ 21. Port Connectivity Checks: "jtag_top:JTAG"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+ 25. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu May 13 00:06:04 2021       ;
+; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
+; Revision Name                   ; DE1_SoC                                     ;
+; Top-level Entity Name           ; DE1_SoC                                     ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 35                                          ;
+; Total pins                      ; 67                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; DE1_SoC            ; DE1_SoC            ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; State Machine Processing                                                        ; User-Encoded       ; Auto               ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                               ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                        ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                    ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
+; test_fsm.sv                      ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_fsm.sv             ;         ;
+; test_ands.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_ands.sv            ;         ;
+; tap_state_machine.sv             ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv    ;         ;
+; singleBSC.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/singleBSC.sv            ;         ;
+; jtag_top_new.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv         ;         ;
+; instruction_register.sv          ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_register.sv ;         ;
+; instruction_cell.sv              ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_cell.sv     ;         ;
+; instr_decode.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instr_decode.sv         ;         ;
+; bsr_mux.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_mux.sv              ;         ;
+; BSC_chain.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/BSC_chain.sv            ;         ;
+; DE1_SoC.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv              ;         ;
+; input_processing.sv              ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/input_processing.sv     ;         ;
+; bsr_decoder.sv                   ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_decoder.sv          ;         ;
+; update_ir_cell.sv                ; yes             ; User SystemVerilog HDL File  ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/update_ir_cell.sv       ;         ;
+; tms.txt                          ; yes             ; Auto-Found File              ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tms.txt                 ;         ;
+; tdi.txt                          ; yes             ; Auto-Found File              ; C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tdi.txt                 ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                           ;
++---------------------------------------------+-------------------------+
+; Resource                                    ; Usage                   ;
++---------------------------------------------+-------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 29                      ;
+;                                             ;                         ;
+; Combinational ALUT usage for logic          ; 47                      ;
+;     -- 7 input functions                    ; 0                       ;
+;     -- 6 input functions                    ; 10                      ;
+;     -- 5 input functions                    ; 7                       ;
+;     -- 4 input functions                    ; 9                       ;
+;     -- <=3 input functions                  ; 21                      ;
+;                                             ;                         ;
+; Dedicated logic registers                   ; 35                      ;
+;                                             ;                         ;
+; I/O pins                                    ; 67                      ;
+;                                             ;                         ;
+; Total DSP Blocks                            ; 0                       ;
+;                                             ;                         ;
+; Maximum fan-out node                        ; input_processing:ip|out ;
+; Maximum fan-out                             ; 23                      ;
+; Total fan-out                               ; 333                     ;
+; Average fan-out                             ; 1.54                    ;
++---------------------------------------------+-------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                 ;
++-----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------+----------------------+--------------+
+; Compilation Hierarchy Node                          ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                            ; Entity Name          ; Library Name ;
++-----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------+----------------------+--------------+
+; |DE1_SoC                                            ; 47 (0)              ; 35 (0)                    ; 0                 ; 0          ; 67   ; 0            ; |DE1_SoC                                                                                       ; DE1_SoC              ; work         ;
+;    |input_processing:ip|                            ; 2 (2)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|input_processing:ip                                                                   ; input_processing     ; work         ;
+;    |jtag_top:JTAG|                                  ; 45 (4)              ; 32 (1)                    ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG                                                                         ; jtag_top             ; work         ;
+;       |BSC_chain:logic_one|                         ; 10 (6)              ; 6 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one                                                     ; BSC_chain            ; work         ;
+;          |singleBSC:bs_chain[0].bs_cell|            ; 1 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[0].bs_cell                       ; singleBSC            ; work         ;
+;          |singleBSC:bs_chain[1].bs_cell|            ; 1 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[1].bs_cell                       ; singleBSC            ; work         ;
+;          |singleBSC:bs_chain[2].bs_cell|            ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[2].bs_cell                       ; singleBSC            ; work         ;
+;          |singleBSC:bs_chain[3].bs_cell|            ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[3].bs_cell                       ; singleBSC            ; work         ;
+;       |BSC_chain:logic_two|                         ; 8 (5)               ; 5 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_two                                                     ; BSC_chain            ; work         ;
+;          |singleBSC:bs_chain[0].bs_cell|            ; 1 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_two|singleBSC:bs_chain[0].bs_cell                       ; singleBSC            ; work         ;
+;          |singleBSC:bs_chain[1].bs_cell|            ; 1 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_two|singleBSC:bs_chain[1].bs_cell                       ; singleBSC            ; work         ;
+;          |singleBSC:bs_chain[2].bs_cell|            ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|BSC_chain:logic_two|singleBSC:bs_chain[2].bs_cell                       ; singleBSC            ; work         ;
+;       |bsr_decoder:bsr_enable|                      ; 2 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|bsr_decoder:bsr_enable                                                  ; bsr_decoder          ; work         ;
+;       |instr_decode:ins_decoder|                    ; 3 (3)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instr_decode:ins_decoder                                                ; instr_decode         ; work         ;
+;       |instruction_register:instr_reg|              ; 5 (0)               ; 7 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg                                          ; instruction_register ; work         ;
+;          |instruction_cell:instr_reg[0].instr_cell| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[0].instr_cell ; instruction_cell     ; work         ;
+;          |instruction_cell:instr_reg[1].instr_cell| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[1].instr_cell ; instruction_cell     ; work         ;
+;          |instruction_cell:instr_reg[2].instr_cell| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[2].instr_cell ; instruction_cell     ; work         ;
+;          |instruction_cell:instr_reg[3].instr_cell| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[3].instr_cell ; instruction_cell     ; work         ;
+;          |update_ir_cell:update_reg[0].ir_cell|     ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|update_ir_cell:update_reg[0].ir_cell     ; update_ir_cell       ; work         ;
+;          |update_ir_cell:update_reg[1].ir_cell|     ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|update_ir_cell:update_reg[1].ir_cell     ; update_ir_cell       ; work         ;
+;          |update_ir_cell:update_reg[2].ir_cell|     ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|instruction_register:instr_reg|update_ir_cell:update_reg[2].ir_cell     ; update_ir_cell       ; work         ;
+;       |tap_state_machine:tap_controller|            ; 11 (11)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|tap_state_machine:tap_controller                                        ; tap_state_machine    ; work         ;
+;       |test_fsm:fms0|                               ; 2 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|jtag_top:JTAG|test_fsm:fms0                                                           ; test_fsm             ; work         ;
++-----------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------+----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  User-Encoded
++---------------------------------------------------------+
+; State Machine - |DE1_SoC|jtag_top:JTAG|test_fsm:fms0|ps ;
++-------+------+------------------------------------------+
+; Name  ; ps~3 ; ps~2                                     ;
++-------+------+------------------------------------------+
+; ps.00 ; 0    ; 0                                        ;
+; ps.01 ; 0    ; 1                                        ;
+; ps.10 ; 1    ; 0                                        ;
+; ps.11 ; 1    ; 1                                        ;
++-------+------+------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                ;
++-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+; Register name                                                                             ; Reason for Removal                                                                                    ;
++-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+; input_processing:ip|ps[1..31]                                                             ; Stuck at GND due to stuck port data_in                                                                ;
+; jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[3].instr_cell|s_o ; Merged with jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[3].instr_cell|p_o ;
+; jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[2].instr_cell|s_o ; Merged with jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[2].instr_cell|p_o ;
+; jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[1].instr_cell|s_o ; Merged with jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[1].instr_cell|p_o ;
+; jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[0].instr_cell|s_o ; Merged with jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[0].instr_cell|p_o ;
+; Total Number of Removed Registers = 35                                                    ;                                                                                                       ;
++-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 35    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 13    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------+
+; Inverted Register Statistics                                   ;
++------------------------------------------------------+---------+
+; Inverted Register                                    ; Fan out ;
++------------------------------------------------------+---------+
+; jtag_top:JTAG|tap_state_machine:tap_controller|ps[0] ; 13      ;
+; jtag_top:JTAG|tap_state_machine:tap_controller|ps[1] ; 13      ;
+; jtag_top:JTAG|tap_state_machine:tap_controller|ps[2] ; 11      ;
+; jtag_top:JTAG|tap_state_machine:tap_controller|ps[3] ; 18      ;
+; Total number of inverted registers = 4               ;         ;
++------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |DE1_SoC|jtag_top:JTAG|test_fsm:fms0|ps ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: jtag_top:JTAG ;
++--------------------+-------+-------------------------------+
+; Parameter Name     ; Value ; Type                          ;
++--------------------+-------+-------------------------------+
+; chain_num          ; 2     ; Signed Integer                ;
+; chain_select_width ; 1     ; Signed Integer                ;
+; instr_width        ; 4     ; Signed Integer                ;
+; logic_1_in         ; 2     ; Signed Integer                ;
+; logic_1_out        ; 2     ; Signed Integer                ;
+; chain_1_length     ; 4     ; Signed Integer                ;
+; logic_2_in         ; 2     ; Signed Integer                ;
+; logic_2_out        ; 1     ; Signed Integer                ;
+; chain_2_length     ; 3     ; Signed Integer                ;
++--------------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: jtag_top:JTAG|instruction_register:instr_reg ;
++----------------+-------+------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                             ;
++----------------+-------+------------------------------------------------------------------+
+; instr_width    ; 4     ; Signed Integer                                                   ;
+; sel_width      ; 1     ; Signed Integer                                                   ;
++----------------+-------+------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: jtag_top:JTAG|instr_decode:ins_decoder ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; instr_width    ; 4     ; Signed Integer                                             ;
+; sel_width      ; 1     ; Signed Integer                                             ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: jtag_top:JTAG|bsr_decoder:bsr_enable ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; chain_num      ; 2     ; Signed Integer                                           ;
+; sel_width      ; 1     ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: jtag_top:JTAG|bsr_mux:bsr_select ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; chain_num      ; 2     ; Signed Integer                                       ;
+; sel_width      ; 1     ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: jtag_top:JTAG|BSC_chain:logic_one ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; chain_length   ; 4     ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: jtag_top:JTAG|BSC_chain:logic_two ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; chain_length   ; 3     ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "jtag_top:JTAG|instruction_register:instr_reg" ;
++----------+-------+----------+--------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                    ;
++----------+-------+----------+--------------------------------------------+
+; p_data_i ; Input ; Info     ; Stuck at GND                               ;
++----------+-------+----------+--------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "jtag_top:JTAG"                                                                                                                                       ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                      ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; system_1_in  ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; system_1_out ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; system_2_in  ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; system_2_out ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; enable       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 35                          ;
+;     CLR               ; 13                          ;
+;     plain             ; 22                          ;
+; arriav_io_obuf        ; 1                           ;
+; arriav_lcell_comb     ; 53                          ;
+;     normal            ; 53                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 15                          ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 9                           ;
+;         5 data inputs ; 7                           ;
+;         6 data inputs ; 10                          ;
+; boundary_port         ; 67                          ;
+;                       ;                             ;
+; Max LUT depth         ; 3.00                        ;
+; Average LUT depth     ; 1.32                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+    Info: Processing started: Thu May 13 00:05:53 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file test_fsm.sv
+    Info (12023): Found entity 1: test_fsm File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_fsm.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file test_ands.sv
+    Info (12023): Found entity 1: test_ands File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/test_ands.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file tap_state_machine.sv
+    Info (12023): Found entity 1: tap_state_machine File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file singlebsc.sv
+    Info (12023): Found entity 1: singleBSC File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/singleBSC.sv Line: 1
+Info (12021): Found 0 design units, including 0 entities, in source file jtag_top_tb.sv
+Info (12021): Found 1 design units, including 1 entities, in source file jtag_top_new.sv
+    Info (12023): Found entity 1: jtag_top File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file instruction_register.sv
+    Info (12023): Found entity 1: instruction_register File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_register.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file instruction_cell.sv
+    Info (12023): Found entity 1: instruction_cell File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_cell.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file instr_decode.sv
+    Info (12023): Found entity 1: instr_decode File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instr_decode.sv Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file bsr_mux.sv
+    Info (12023): Found entity 1: bsr_mux File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_mux.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file bsc_chain.sv
+    Info (12023): Found entity 1: BSC_chain File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/BSC_chain.sv Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file de1_soc.sv
+    Info (12023): Found entity 1: DE1_SoC File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv Line: 1
+    Info (12023): Found entity 2: jtag_top_tb File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv Line: 33
+Info (12021): Found 1 design units, including 1 entities, in source file input_processing.sv
+    Info (12023): Found entity 1: input_processing File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/input_processing.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file bsr_decoder.sv
+    Info (12023): Found entity 1: bsr_decoder File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/bsr_decoder.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file update_ir_cell.sv
+    Info (12023): Found entity 1: update_ir_cell File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/update_ir_cell.sv Line: 1
+Info (12127): Elaborating entity "DE1_SoC" for the top level hierarchy
+Info (12128): Elaborating entity "input_processing" for hierarchy "input_processing:ip" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv Line: 19
+Info (12128): Elaborating entity "jtag_top" for hierarchy "jtag_top:JTAG" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv Line: 28
+Info (12128): Elaborating entity "tap_state_machine" for hierarchy "jtag_top:JTAG|tap_state_machine:tap_controller" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 59
+Info (12128): Elaborating entity "instruction_register" for hierarchy "jtag_top:JTAG|instruction_register:instr_reg" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 80
+Info (12128): Elaborating entity "instruction_cell" for hierarchy "jtag_top:JTAG|instruction_register:instr_reg|instruction_cell:instr_reg[0].instr_cell" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_register.sv Line: 30
+Info (12128): Elaborating entity "update_ir_cell" for hierarchy "jtag_top:JTAG|instruction_register:instr_reg|update_ir_cell:update_reg[0].ir_cell" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/instruction_register.sv Line: 43
+Info (12128): Elaborating entity "instr_decode" for hierarchy "jtag_top:JTAG|instr_decode:ins_decoder" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 93
+Info (12128): Elaborating entity "bsr_decoder" for hierarchy "jtag_top:JTAG|bsr_decoder:bsr_enable" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 110
+Info (12128): Elaborating entity "bsr_mux" for hierarchy "jtag_top:JTAG|bsr_mux:bsr_select" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 122
+Info (12128): Elaborating entity "BSC_chain" for hierarchy "jtag_top:JTAG|BSC_chain:logic_one" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 189
+Info (12128): Elaborating entity "singleBSC" for hierarchy "jtag_top:JTAG|BSC_chain:logic_one|singleBSC:bs_chain[0].bs_cell" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/BSC_chain.sv Line: 26
+Info (12128): Elaborating entity "BSC_chain" for hierarchy "jtag_top:JTAG|BSC_chain:logic_two" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 202
+Info (12128): Elaborating entity "test_fsm" for hierarchy "jtag_top:JTAG|test_fsm:fms0" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 209
+Info (12128): Elaborating entity "test_ands" for hierarchy "jtag_top:JTAG|test_ands:and0" File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/jtag_top_new.sv Line: 214
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/Users/Study/Desktop/JTAG/JTAG - FPGA/output_files/DE1_SoC.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 122 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 55 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4859 megabytes
+    Info: Processing ended: Thu May 13 00:06:04 2021
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:28
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Study/Desktop/JTAG/JTAG - FPGA/output_files/DE1_SoC.map.smsg.
+
+

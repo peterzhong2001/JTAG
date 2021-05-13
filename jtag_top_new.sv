@@ -38,7 +38,7 @@ module jtag_top #(
     // control signals to instruction register
     logic clock_ir, shift_ir, update_ir, reset_n_ir;
     // control signals to tdo
-    logic select_tdo, tdo_en;
+    logic select_tdo, tdo_en, bypass;
     logic [3:0] tap_state;
 
     tap_state_machine tap_controller (
@@ -54,14 +54,17 @@ module jtag_top #(
         .shift_ir(shift_ir),
         .select_tdo(select_tdo),
         .tdo_en(tdo_en),
+		  .bypass(bypass),
         .tap_state(tap_state)
     );
 
 /********************instruction register********************/
-    logic [instr_width-1:0] instr;
+    logic [instr_width-1:0] instr_decode_in;
+	 logic [chain_select_width+1:0] instr_decode_out, instr;
     logic instr_reg_out;
 
-    instruction_register #(.instr_width(instr_width)) 
+    instruction_register #(.instr_width(instr_width),
+									.sel_width(chain_select_width)) 
         instr_reg (
             .trst_n(trst_n_i),
             .reset_n(reset_n_ir),
@@ -70,6 +73,8 @@ module jtag_top #(
             .shift_ir(shift_ir),
             .s_i(tdi_i),
             .p_data_i({instr_width{1'b0}}),
+				.instr_decode_in(instr_decode_in),
+				.instr_decode_out(instr_decode_out),
             .p_data_o(instr),
             .s_o(instr_reg_out)
         );
@@ -83,14 +88,27 @@ module jtag_top #(
         ins_decoder(
             .reset_n(trst_n_i),
             .clk(tck_i),
-            .instr_in(instr),
-            .mux_sel(chain_sel),
-            .sample_preload(sample_preload),
-            .ex_in_test(ex_in_test)
+            .instr_in(instr_decode_in),
+            .instr_decode_out(instr_decode_out)
         );
+	
+	 assign chain_sel = instr[chain_select_width+1:2];
+	 assign sample_preload = instr[1];
+	 assign ex_in_test = instr[0];
+	 
     assign clock_dr = clock_dr_tap & (sample_preload | ex_in_test);
     assign update_dr = update_dr_tap & (sample_preload | ex_in_test);
 
+/********************chain enable********************/
+	 logic [chain_num-1:0] bsr_decoder_out;
+	 bsr_decoder #(.chain_num(chain_num))
+		  bsr_enable (
+				.sel(chain_sel),
+				.bsr_decoder_out(bsr_decoder_out),
+				.clk(tck_i),
+				.reset_n(trst_n_i)
+		  );
+	 
 /********************chain select********************/
     logic [chain_num-1:0] chain_so;
     logic scan_reg_out, tdo_temp;
@@ -104,7 +122,7 @@ module jtag_top #(
         );
 
 /********************BSC mode********************/
-    logic mode;
+    logic mode, tdo;
     //assign mode = ex_in_test ? 1'b1 : 1'b0;
     always_ff @(posedge update_dr or negedge trst_n_i) begin
         if(~trst_n_i) begin
@@ -116,8 +134,23 @@ module jtag_top #(
                 mode <= 1'b0;
         end
     end
-
-    assign tdo_o = tdo_en ? select_tdo ? instr_reg_out : scan_reg_out : 1'bz;
+	
+	// mux for selecting tdo
+	always_comb begin
+		if (tdo_en) begin
+			if (select_tdo)
+				tdo = instr_reg_out;
+			else if (bypass)
+				tdo = tdi_i;
+			else
+				tdo = scan_reg_out;
+			end
+		else
+			tdo = 1'bz;
+	end
+	
+	assign tdo_o = tdo;
+	
     // always_ff @(negedge tck_i or negedge trst_n_i) begin
     //     if(~trst_n_i) begin
     //         tdo_o <= 1'bz;
@@ -147,6 +180,7 @@ module jtag_top #(
             .clock_dr(clock_dr), 
             .update_dr(update_dr), 
             .shift_dr(shift_dr), 
+				.enable(bsr_decoder_out[0]),
             .mode(mode), 
             .s_i(tdi_i),
             .p_data_i(pIN_1), 
@@ -159,6 +193,7 @@ module jtag_top #(
             .clock_dr(clock_dr), 
             .update_dr(update_dr), 
             .shift_dr(shift_dr), 
+				.enable(bsr_decoder_out[1]),
             .mode(mode), 
             .s_i(tdi_i),
             .p_data_i(pIN_2), 

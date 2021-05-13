@@ -1,0 +1,8 @@
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (10281): Verilog HDL Declaration information at tap_state_machine.sv(12): object "shift_dr" differs only in case from object "shift_DR" in the same scope File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv Line: 12
+Info (10281): Verilog HDL Declaration information at tap_state_machine.sv(11): object "update_dr" differs only in case from object "update_DR" in the same scope File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv Line: 11
+Info (10281): Verilog HDL Declaration information at tap_state_machine.sv(18): object "shift_ir" differs only in case from object "shift_IR" in the same scope File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv Line: 18
+Info (10281): Verilog HDL Declaration information at tap_state_machine.sv(17): object "update_ir" differs only in case from object "update_IR" in the same scope File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/tap_state_machine.sv Line: 17
+Warning (10268): Verilog HDL information at DE1_SoC.sv(95): always construct contains both blocking and non-blocking assignments File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv Line: 95
+Warning (10268): Verilog HDL information at DE1_SoC.sv(105): always construct contains both blocking and non-blocking assignments File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv Line: 105
+Warning (10034): Output port "LEDR[5..1]" at DE1_SoC.sv(3) has no driver File: C:/Users/Study/Desktop/JTAG/JTAG - FPGA/DE1_SoC.sv Line: 3

@@ -17,10 +17,11 @@ module tap_state_machine (
 	output logic update_ir,
 	output logic shift_ir,
 
-	// select DR or IR
+	// select DR or IR or Bypass
 	output logic select_tdo,
 	output logic tdo_en,
-
+	output logic bypass,
+	
 	// debug port, tap_state
 	output logic [3:0] tap_state
 	);
@@ -104,7 +105,7 @@ module tap_state_machine (
 				reset_n_ir <= 1'b0;
 			else
 				reset_n_ir <= 1'b1;
-
+				
 			if (ps == shift_IR)
 				shift_ir <= 1'b1;
 			else
@@ -136,6 +137,7 @@ module tap_state_machine (
 			tdo_en <= 1'b0;
 	end
 	assign select_tdo = ps[3];
-
+	assign bypass = (ps == reset);
+	
 	assign tap_state = ps;
 endmodule
