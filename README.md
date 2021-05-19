@@ -7,7 +7,7 @@ test individually the functionality of different components and the validity of 
 A series of additional instruction registers are used to update user instructions to the instruction decoder. The decoder will then synchronously provide the current test mode and chain selection information to the boundary scan chains. A TAP (Test Access Port) module controls the operation of both the boundary scan registers and the instruction registers (shifting, clocking, updating), and sends control signals accordingly when different operations are requested through the Test Mode Select (TMS) port.
 
 **To load this project onto a DE1_SoC board:**\
-&nbsp;&nbsp;&nbsp;&nbsp;1. Download the entire repository\
+&nbsp;&nbsp;&nbsp;&nbsp;1. Download the entire JTAG directory in this repository\
 &nbsp;&nbsp;&nbsp;&nbsp;2. Open DE1_SoC.qpf in Quartus Prime\
 &nbsp;&nbsp;&nbsp;&nbsp;3. Compile the project with DE1_SoC.sv as the top-level entity\
 &nbsp;&nbsp;&nbsp;&nbsp;4. Power on your DE1_SoC board and connect your DE1_SoC board to your computer via USB\
@@ -46,7 +46,9 @@ Since all the scan chains operates in parallel and accepts control signals at th
 ### 3. Instruction Registers
 In the original implementation of the instruction registers, the clock_ir DFFs and the update_ir DFFs are all placed before the instruction decoder. This is a working design, but it can cause delay in the output signals since the instruction decoder will take some amount of time to process the input data. Therefore, the original implementation of the instruction registers and the asynchronous nature of the outputs of the instruction decoders can be potentially glitchy and cause problem to the overall operation of the JTAG module.
 
-I reimplemented the intruction registers so that the instruction decoder is placed in between the clock_ir DFFs and the update_ir DFFs. This implementation updates the outputs of the instruction decoder immediately when update_ir is pulsed, which makes the operations of the instruction register in accordance to the IEEE standard. [Here](https://imgur.com/a/q2ro6o0) is the block diagram for an instruction register according to the IEEE standard. 
+I reimplemented the intruction registers so that the instruction decoder is placed in between the clock_ir DFFs and the update_ir DFFs. This implementation updates the outputs of the instruction decoder immediately when update_ir is pulsed, which makes the operations of the instruction register in accordance to the IEEE standard. The Figure below shows the block diagram for an instruction register according to the IEEE standard.
+
+<img src="Instruction Registers IEEE.png">
 
 ## Acknowledgements
 All the SystemVerilog code files in this repository are my project as an undergraduate research assistant at PSyLab (Processing Systems Lab) with Prof. Visvesh Sathe. The original JTAG code was provided by my supervisor Yuan Liao, who also assisted me and provided me ample guidance through the process of learning the functionality of the JTAG module and implementing the improvements. 
