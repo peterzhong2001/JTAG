@@ -18,7 +18,7 @@ A series of additional instruction registers are used to update user instruction
 ### Top-Level Modules
 **DE1_SoC.sv:** the top-level module for FPGA emulation. It instantiates a jtag_top module (contained in the jtag_top_new.sv file, and it also uses an input_processing module to clean up the TCK input provided by the user on KEY0.\
 **jtag_top_new.sv:** top-level module that instantiates and connects all the JTAG components.
-### TAP Controller
+### Test Access Port (TAP) Controller
 **tap_state_machine.sv:** a 18-state FSM used to control the operations of the JTAG module. It takes serial input data from the TMS port and updates control signals (clock, shift, update, etc.) accordingly.
 ### Boundary Scan Operation Modules
 **BSC_chain.sv:** an individual boundary scan chain. It generates boundary scan cells based on the parameter chain_length.\
@@ -49,4 +49,4 @@ In the original implementation of the instruction registers, the clock_ir DFFs a
 I reimplemented the intruction registers so that the instruction decoder is placed in between the clock_ir DFFs and the update_ir DFFs. This implementation updates the outputs of the instruction decoder immediately when update_ir is pulsed, which makes the operations of the instruction register in accordance to the IEEE standard. [Here](https://imgur.com/a/q2ro6o0) is the block diagram for an instruction register according to the IEEE standard. 
 
 ## Acknowledgements
-All the SystemVerilog code files in this repository are my project as an undergraduate research assistant at PSyLab (Processing Systems Lab) with Prof. Visvesh Sathe. The original JTAG code was provided by my supervisor Yuan Liao, who also provided me ample guidance through the process of learning the functionality of the JTAG module and implementing the improvements. 
+All the SystemVerilog code files in this repository are my project as an undergraduate research assistant at PSyLab (Processing Systems Lab) with Prof. Visvesh Sathe. The original JTAG code was provided by my supervisor Yuan Liao, who also assisted me and provided me ample guidance through the process of learning the functionality of the JTAG module and implementing the improvements. 
